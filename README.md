@@ -7,8 +7,8 @@ Auto-discovers models from a running local Ollama server and registers them as t
 ### From Source
 
 ```bash
-cd /Users/asdrubal.gonzalez/Workspace/AI/extensions/pi-ollama
-pi -e .
+git clone https://github.com/agpenton/pi-ollama ~/code/pi-ollama
+pi -e ~/code/pi-ollama/index.ts
 ```
 
 Or install globally:
