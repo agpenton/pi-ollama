@@ -40,6 +40,7 @@ const TagsResponseSchema = Type.Object({
 						quantization_level: Type.Optional(Type.String()),
 					}),
 				),
+				capabilities: Type.Optional(Type.Array(Type.String())),
 			}),
 		),
 	),
@@ -198,7 +199,7 @@ export default async function (pi: ExtensionAPI) {
 				name: "ollama",
 				baseUrl,
 				apiKey,
-				api: "ollama", // Using ollama-specific API
+				api: "openai-completions",
 				models: currentModels,
 			});
 		} catch (error) {
