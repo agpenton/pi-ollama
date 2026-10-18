@@ -1,0 +1,21 @@
+{
+  "name": "pi-ollama",
+  "version": "0.1.0",
+  "description": "ollama.cpp Pi extension",
+  "type": "module",
+  "license": "MIT",
+  "keywords": ["pi-package", "pi-extension", "ollama.cpp", "huggingface"],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:agpenton/pi-ollama.git"
+  },
+  "pi": {
+    "extensions": ["./index.ts"]
+  },
+  "peers": {
+    "@earendil-works/pi-coding-agent": "*"
+  },
+  "peerDependenciesMeta": {
+    "@earendil-works/pi-coding-agent": { "optional": true }
+  }
+}
