@@ -35,16 +35,18 @@ const TagsResponseSchema = Type.Object({
 						parent_modal: Type.Optional(Type.String()),
 						format: Type.Optional(Type.String()),
 						family: Type.Optional(Type.String()),
-						families: Type.Optional(Type.Array(Type.String())),
+						families: Type.Optional(
+							Type.Union([Type.Array(Type.String()), Type.Null()]),
+						),
 						parameter_size: Type.Optional(Type.String()),
 						quantization_level: Type.Optional(Type.String()),
-					}),
+					}, { additionalProperties: true }),
 				),
 				capabilities: Type.Optional(Type.Array(Type.String())),
-			}),
+			}, { additionalProperties: true }),
 		),
 	),
-});
+}, { additionalProperties: true });
 
 const validateTagsResponse = Compile(TagsResponseSchema);
 
@@ -197,7 +199,7 @@ export default async function (pi: ExtensionAPI) {
 
 			pi.registerProvider(PROVIDER_ID, {
 				name: "ollama",
-				baseUrl,
+				baseUrl: `${baseUrl}/v1`,
 				apiKey,
 				api: "openai-completions",
 				models: currentModels,
@@ -385,9 +387,9 @@ export default async function (pi: ExtensionAPI) {
 			}
 			pi.registerProvider(PROVIDER_ID, {
 				name: "ollama",
-				baseUrl,
+				baseUrl: `${baseUrl}/v1`,
 				apiKey,
-				api: "ollama",
+				api: "openai-completions",
 				models: currentModels,
 			});
 		} catch (error) {

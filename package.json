@@ -12,7 +12,7 @@
   "pi": {
     "extensions": ["./index.ts"]
   },
-  "peers": {
+  "peerDependencies": {
     "@earendil-works/pi-coding-agent": "*"
   },
   "peerDependenciesMeta": {
